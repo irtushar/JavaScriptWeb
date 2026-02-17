@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+    <title>All-in-One Form Validation</title>
+    <link rel="stylesheet" href="all.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Registration Form</h2>
+
+      <form id="myForm">
+        <!-- Name -->
+        <label>Full Name</label>
+        <input type="text" id="name" />
+        <small class="error" id="nameError"></small>
+
+        <!-- Email -->
+        <label>Email</label>
+        <input type="text" id="email" />
+        <small class="error" id="emailError"></small>
+
+        <!-- Phone -->
+        <label>Phone Number</label>
+        <input type="text" id="phone" />
+        <small class="error" id="phoneError"></small>
+
+        <!-- Password -->
+        <label>Password</label>
+        <input type="password" id="password" />
+        <small class="error" id="passwordError"></small>
+
+        <!-- Confirm Password -->
+        <label>Confirm Password</label>
+        <input type="password" id="confirmPassword" />
+        <small class="error" id="confirmPasswordError"></small>
+
+        <!-- Date of Birth -->
+        <label>Date of Birth</label>
+        <input type="date" id="dob" />
+        <small class="error" id="dobError"></small>
+
+        <!-- Gender -->
+        <label>Gender</label>
+        <select id="gender">
+          <option value="">Select Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+        <small class="error" id="genderError"></small>
+
+        <!-- Country -->
+        <label>Country</label>
+        <select id="country">
+          <option value="">Select Country</option>
+          <option>India</option>
+          <option>USA</option>
+          <option>UK</option>
+        </select>
+        <small class="error" id="countryError"></small>
+
+        <!-- Passport -->
+        <label>Passport Number</label>
+        <input type="text" id="passport" />
+        <small class="error" id="passportError"></small>
+
+        <!-- Terms -->
+        <div class="checkbox">
+          <input type="checkbox" id="terms" />
+          <label>I agree to Terms & Conditions</label>
+        </div>
+        <small class="error" id="termsError"></small>
+
+        <button type="submit">Submit</button>
+        <button type="button" onclick="resetForm()">Reset</button>
+      </form>
+    </div>
+
+    <script src="all.js"></script>
+  </body>
+</html>
