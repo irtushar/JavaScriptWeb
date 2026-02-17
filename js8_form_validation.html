@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Complete Form Validation</title>
+
+    <style>
+      body {
+        font-family: Arial;
+      }
+
+      .container {
+        width: 400px;
+        margin: 20px auto;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+      }
+
+      .error {
+        color: red;
+        font-size: 14px;
+      }
+
+      button {
+        padding: 10px;
+        background: blue;
+        color: white;
+        border: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Registration Form</h2>
+
+      <form id="myForm">
+        <!-- Name -->
+        Name:
+        <input type="text" id="name" />
+        <div id="nameError" class="error"></div>
+
+        <!-- Email -->
+        Email:
+        <input type="text" id="email" />
+        <div id="emailError" class="error"></div>
+
+        <!-- Password -->
+        Password:
+        <input type="password" id="password" />
+        <div id="passwordError" class="error"></div>
+
+        <!-- Confirm Password -->
+        Confirm Password:
+        <input type="password" id="confirmPassword" />
+        <div id="confirmError" class="error"></div>
+
+        <!-- Age -->
+        Age:
+        <input type="number" id="age" />
+        <div id="ageError" class="error"></div>
+
+        <!-- Gender -->
+        Gender:
+        <input type="radio" name="gender" value="Male" /> Male
+        <input type="radio" name="gender" value="Female" /> Female
+        <div id="genderError" class="error"></div>
+
+        <!-- Country -->
+        Country:
+        <select id="country">
+          <option value="">Select Country</option>
+          <option>Bangladesh</option>
+          <option>USA</option>
+          <option>UK</option>
+        </select>
+        <div id="countryError" class="error"></div>
+
+        <!-- Terms -->
+        <input type="checkbox" id="terms" /> I agree to terms
+        <div id="termsError" class="error"></div>
+
+        <br /><br />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("myForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // Stop form submission
+
+          let isValid = true;
+
+          // Clear previous errors
+          document
+            .querySelectorAll(".error")
+            .forEach((el) => (el.innerHTML = ""));
+
+          // Name Validation
+          let name = document.getElementById("name").value.trim();
+          if (name === "") {
+            document.getElementById("nameError").innerHTML = "Name is required";
+            isValid = false;
+          }
+
+          // Email Validation
+          let email = document.getElementById("email").value.trim();
+          let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+          if (!email.match(emailPattern)) {
+            document.getElementById("emailError").innerHTML =
+              "Enter valid email";
+            isValid = false;
+          }
+
+          // Password Validation
+          let password = document.getElementById("password").value;
+          if (password.length < 6) {
+            document.getElementById("passwordError").innerHTML =
+              "Password must be at least 6 characters";
+            isValid = false;
+          }
+
+          // Confirm Password
+          let confirmPassword =
+            document.getElementById("confirmPassword").value;
+          if (password !== confirmPassword) {
+            document.getElementById("confirmError").innerHTML =
+              "Passwords do not match";
+            isValid = false;
+          }
+
+          // Age Validation
+          let age = document.getElementById("age").value;
+          if (age === "" || age < 18) {
+            document.getElementById("ageError").innerHTML = "Age must be 18+";
+            isValid = false;
+          }
+
+          // Gender Validation
+          let gender = document.querySelector('input[name="gender"]:checked');
+          if (!gender) {
+            document.getElementById("genderError").innerHTML = "Select gender";
+            isValid = false;
+          }
+
+          // Country Validation
+          let country = document.getElementById("country").value;
+          if (country === "") {
+            document.getElementById("countryError").innerHTML =
+              "Select country";
+            isValid = false;
+          }
+
+          // Terms Validation
+          let terms = document.getElementById("terms").checked;
+          if (!terms) {
+            document.getElementById("termsError").innerHTML =
+              "You must agree to terms";
+            isValid = false;
+          }
+
+          if (isValid) {
+            alert("Form submitted successfully!");
+            document.getElementById("myForm").reset();
+          }
+        });
+    </script>
+  </body>
+</html>

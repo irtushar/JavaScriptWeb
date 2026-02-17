@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Confirm Password</title>
+  </head>
+  <body>
+    <form onsubmit="return checkPassword();">
+      Password: <input type="password" id="pass1" /><br />
+      Confirm Password: <input type="password" id="pass2" /><br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+      function checkPassword() {
+        let p1 = document.getElementById("pass1").value;
+        let p2 = document.getElementById("pass2").value;
+
+        if (p1 !== p2) {
+          alert("Passwords do not match");
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>

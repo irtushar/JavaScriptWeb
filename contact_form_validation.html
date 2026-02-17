@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Contact Form</title>
+  </head>
+  <body>
+    <h2>Contact Us</h2>
+
+    <form onsubmit="return validateContact();">
+      Name: <input type="text" id="name" /><br /><br />
+      Email: <input type="text" id="email" /><br /><br />
+      Message:<br />
+      <textarea id="message"></textarea><br /><br />
+
+      <input type="submit" value="Send" />
+    </form>
+
+    <script>
+      function validateContact() {
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let message = document.getElementById("message").value.trim();
+
+        let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+        if (name === "") {
+          alert("Enter name");
+          return false;
+        }
+        if (!email.match(pattern)) {
+          alert("Invalid email");
+          return false;
+        }
+        if (message.length < 10) {
+          alert("Message too short");
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Login Form</title>
+  </head>
+  <body>
+    <h2>Login</h2>
+
+    <form onsubmit="return validateLogin();">
+      Email:
+      <input type="text" id="email" /><br /><br />
+
+      Password:
+      <input type="password" id="password" /><br /><br />
+
+      <input type="submit" value="Login" />
+    </form>
+
+    <script>
+      function validateLogin() {
+        let email = document.getElementById("email").value.trim();
+        let password = document.getElementById("password").value;
+
+        let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+        if (!email.match(emailPattern)) {
+          alert("Enter valid email");
+          return false;
+        }
+
+        if (password.length < 6) {
+          alert("Password must be at least 6 characters");
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+  </body>
+</html>

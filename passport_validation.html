@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Passport Validation</title>
+  </head>
+  <body>
+    <h2>Passport Validation</h2>
+
+    <form onsubmit="return validatePassport();">
+      Passport Number:
+      <input type="text" id="passport" />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+      function validatePassport() {
+        let passport = document.getElementById("passport").value.trim();
+
+        // Pattern: 1 Capital Letter + 7 Digits
+        let pattern = /^[A-Z]{1}[0-9]{7}$/;
+
+        if (passport === "") {
+          alert("Passport number is required");
+          return false;
+        }
+
+        if (!passport.match(pattern)) {
+          alert("Invalid Passport Format! Example: A1234567");
+          return false;
+        }
+
+        alert("Valid Passport Number");
+        return true;
+      }
+    </script>
+  </body>
+</html>

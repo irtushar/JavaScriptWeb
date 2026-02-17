@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Checkbox Validation</title>
+  </head>
+  <body>
+    <form onsubmit="return validateCheckbox();">
+      <input type="checkbox" id="terms" /> I agree to terms <br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+      function validateCheckbox() {
+        let check = document.getElementById("terms").checked;
+
+        if (!check) {
+          alert("You must agree to terms");
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>

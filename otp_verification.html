@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>OTP</title>
+  </head>
+  <body>
+    <h2>OTP Verification</h2>
+
+    <form onsubmit="return validateOTP();">
+      Enter 6-digit OTP:
+      <input type="text" id="otp" />
+      <input type="submit" value="Verify" />
+    </form>
+
+    <script>
+      function validateOTP() {
+        let otp = document.getElementById("otp").value;
+        let pattern = /^[0-9]{6}$/;
+
+        if (!otp.match(pattern)) {
+          alert("OTP must be 6 digits");
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>

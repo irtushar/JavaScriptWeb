@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Required Field</title>
+  </head>
+  <body>
+    <form onsubmit="return validateName();">
+      Name: <input type="text" id="name" />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+      function validateName() {
+        let name = document.getElementById("name").value;
+        if (name === "") {
+          alert("Name is required");
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>
